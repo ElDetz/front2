@@ -1,0 +1,36 @@
+<div class="flex">
+    <aside class="w-64 bg-gray-700 h-screen p-6 fixed">
+      <ul class="space-y-4">
+        <li><a routerLink="/advising" class="text-white block hover:bg-gray-600 p-2 rounded">{{ 'ADVISING' | translate }}</a></li>
+        <li><a routerLink="/research-group" class="text-white block hover:bg-gray-600 p-2 rounded">{{ 'RESEARCH GROUP' | translate }}</a></li>
+        <li><a routerLink="/research-line" class="text-white block hover:bg-gray-600 p-2 rounded">{{ 'RESEARCH LINE' | translate }}</a></li>
+      </ul>
+    </aside>
+  
+    <div class="ml-64 flex-1 mx-auto my-8 p-6 bg-white rounded-lg shadow-lg max-w-7xl">
+      <h2 class="text-3xl font-semibold mb-6 text-gray-800">{{ 'LIST OF ADVISORS' | translate }}</h2>
+      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4">{{ 'CREATE ADVISOR' | translate }}</button>
+      <div class="overflow-x-auto">
+        <table class="w-full bg-white border border-gray-300 rounded-lg">
+          <thead class="bg-gray-700 text-white">
+            <tr>
+              <th class="py-3 px-5 border-b-2 border-gray-200 text-left">{{ 'NAME' | translate }}</th>
+              <th class="py-3 px-5 border-b-2 border-gray-200 text-left">{{ 'EMAIL' | translate }}</th>
+              <th class="py-3 px-5 border-b-2 border-gray-200 text-left">{{ 'RESEARCH GROUP' | translate }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let professor of professors" class="border-b hover:bg-gray-50 transition-colors">
+              <td class="py-4 px-5">{{ professor.user.firstName }} {{ professor.user.lastName }}</td>
+              <td class="py-4 px-5">{{ professor.user.email }}</td>
+              <td class="py-4 px-5">{{ professor.researchGroup.name }}</td>
+            </tr>
+            <tr *ngIf="!professors.length">
+              <td colspan="3" class="py-4 px-5 text-center text-gray-500">{{ 'No advisors available. Create one!' | translate }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  
